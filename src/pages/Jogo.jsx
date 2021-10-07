@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { decode } from 'he';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import { BUTTON_NEXT, INLINE_BLOCK, num3 } from './JogoConstante';
@@ -206,7 +207,12 @@ class Jogo extends React.Component {
       <div>
         <Header i={ i } />
         <div className="countainer-questions">
-          <h1 className="quest" data-testid="question-text">{questions[i].question}</h1>
+          <h1
+            className="quest"
+            data-testid="question-text"
+          >
+            {decode(questions[i].question)}
+          </h1>
           <h2 data-testid="question-category">{questions[i].category}</h2>
           { this.answerAlternatives() }
           <p>{`Tempo restante:${timer}s`}</p>
