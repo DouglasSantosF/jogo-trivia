@@ -17,6 +17,11 @@
   color: aliceblue;
 }
 
+.div-test {
+  display: flex;
+  justify-content: center;
+}
+
 .config {
   display: flex;
   flex-direction: column;

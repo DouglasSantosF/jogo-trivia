@@ -18,3 +18,10 @@ export const setPlacar = (payLoad) => ({
   type: SET_PLACAR,
   payLoad,
 });
+
+export const SET_CONFIG = 'SET_CONFIG';
+
+export const setConfig = (payLoad) => ({
+  type: SET_CONFIG,
+  payLoad,
+});

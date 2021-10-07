@@ -177,7 +177,7 @@ class Jogo extends React.Component {
           type="button"
           data-testid={ `wrong-answer-${index}` }
         >
-          {incorrect}
+          {decode(incorrect)}
         </button>
       </p>
     ));
@@ -190,7 +190,7 @@ class Jogo extends React.Component {
           type="button"
           data-testid="correct-answer"
         >
-          {questions[i].correct_answer}
+          {decode(questions[i].correct_answer)}
         </button>
       </p>);
     listaDeRespostas.push(alternativasCorretas);
