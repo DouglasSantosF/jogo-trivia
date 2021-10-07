@@ -207,10 +207,7 @@ class Jogo extends React.Component {
       <div>
         <Header i={ i } />
         <div className="countainer-questions">
-          <h1
-            className="quest"
-            data-testid="question-text"
-          >
+          <h1 className="quest" data-testid="question-text">
             {decode(questions[i].question)}
           </h1>
           <h2 data-testid="question-category">{questions[i].category}</h2>
@@ -248,7 +245,5 @@ Jogo.propTypes = {
 Jogo.propTypes = {
   scoreRedux: PropTypes.number,
   emailRedux: PropTypes.string,
-  nomeRedux: PropTypes.string,
-}.isRequired;
-export default connect(mapStateToProps, mapDispatchToProps)(Jogo);
-/* Referências para a função que muda a posição da alternativa correta: -- https://www.horadecodar.com.br/2020/03/30/javascript-mudar-a-posicao-de-um-elemento-no-array/ -- https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Math/random */
+  nomeRedux: PropTypes.string }.isRequired;
+export default connect(mapStateToProps, mapDispatchToProps)(Jogo); /* Referências para a função que muda a posição da alternativa correta: -- https://www.horadecodar.com.br/2020/03/30/javascript-mudar-a-posicao-de-um-elemento-no-array/ -- https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Math/random */
