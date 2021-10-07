@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { decode } from 'he';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import { BUTTON_NEXT, INLINE_BLOCK, num3 } from './JogoConstante';
@@ -176,7 +177,7 @@ class Jogo extends React.Component {
           type="button"
           data-testid={ `wrong-answer-${index}` }
         >
-          {incorrect}
+          {decode(incorrect)}
         </button>
       </p>
     ));
@@ -189,7 +190,7 @@ class Jogo extends React.Component {
           type="button"
           data-testid="correct-answer"
         >
-          {questions[i].correct_answer}
+          {decode(questions[i].correct_answer)}
         </button>
       </p>);
     listaDeRespostas.push(alternativasCorretas);
@@ -206,7 +207,9 @@ class Jogo extends React.Component {
       <div>
         <Header i={ i } />
         <div className="countainer-questions">
-          <h1 className="quest" data-testid="question-text">{questions[i].question}</h1>
+          <h1 className="quest" data-testid="question-text">
+            {decode(questions[i].question)}
+          </h1>
           <h2 data-testid="question-category">{questions[i].category}</h2>
           { this.answerAlternatives() }
           <p>{`Tempo restante:${timer}s`}</p>
@@ -242,7 +245,5 @@ Jogo.propTypes = {
 Jogo.propTypes = {
   scoreRedux: PropTypes.number,
   emailRedux: PropTypes.string,
-  nomeRedux: PropTypes.string,
-}.isRequired;
-export default connect(mapStateToProps, mapDispatchToProps)(Jogo);
-/* Referências para a função que muda a posição da alternativa correta: -- https://www.horadecodar.com.br/2020/03/30/javascript-mudar-a-posicao-de-um-elemento-no-array/ -- https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Math/random */
+  nomeRedux: PropTypes.string }.isRequired;
+export default connect(mapStateToProps, mapDispatchToProps)(Jogo);/* Referências para a função que muda a posição da alternativa correta: -- https://www.horadecodar.com.br/2020/03/30/javascript-mudar-a-posicao-de-um-elemento-no-array/ -- https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Math/random */
