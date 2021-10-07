@@ -246,4 +246,4 @@ Jogo.propTypes = {
   scoreRedux: PropTypes.number,
   emailRedux: PropTypes.string,
   nomeRedux: PropTypes.string }.isRequired;
-export default connect(mapStateToProps, mapDispatchToProps)(Jogo); /* Referências para a função que muda a posição da alternativa correta: -- https://www.horadecodar.com.br/2020/03/30/javascript-mudar-a-posicao-de-um-elemento-no-array/ -- https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Math/random */
+export default connect(mapStateToProps, mapDispatchToProps)(Jogo);/* Referências para a função que muda a posição da alternativa correta: -- https://www.horadecodar.com.br/2020/03/30/javascript-mudar-a-posicao-de-um-elemento-no-array/ -- https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Math/random */
