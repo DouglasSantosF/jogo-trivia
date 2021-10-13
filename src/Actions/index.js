@@ -25,3 +25,10 @@ export const setConfig = (payLoad) => ({
   type: SET_CONFIG,
   payLoad,
 });
+
+export const SET_LOADING = 'SET_LOADING';
+
+export const setLoading = (payLoad) => ({
+  type: SET_LOADING,
+  payLoad,
+});

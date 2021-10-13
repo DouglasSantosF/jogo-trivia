@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
-import { setLogin, setQuestions } from '../Actions';
+import { setLoading, setLogin, setQuestions } from '../Actions';
 import './Forms.css';
 
 class Forms extends React.Component {
@@ -19,19 +19,20 @@ class Forms extends React.Component {
   }
 
   async onSubmitForm() {
-    const { dispatchSetLogin, history } = this.props;
+    const { dispatchSetLogin, history, reduxLoading } = this.props;
     dispatchSetLogin(this.state);
     await this.apiFetch();
     await this.apiFetchTrivia();
-    history.push('/jogo');
+    if (!reduxLoading) { history.push('/jogo'); }
   }
 
   async apiFetchTrivia() {
-    const { dispatchSetQuestions } = this.props;
+    const { dispatchSetQuestions, dispatchSetLoading,
+      reduxConfig } = this.props;
+    dispatchSetLoading();
     const token = localStorage.getItem('token');
-    const response = await fetch(`https://opentdb.com/api.php?amount=5&token=${token}`);
+    const response = await fetch(`https://opentdb.com/api.php?amount=5&category=${reduxConfig.category}&difficulty=${reduxConfig.difficulty}&type=${reduxConfig.type}&${token}`);
     const json = await response.json();
-    console.log(json);
     const { results } = json;
     dispatchSetQuestions(results);
   }
@@ -106,6 +107,9 @@ class Forms extends React.Component {
 Forms.propTypes = {
   dispatchSetLogin: PropTypes.func.isRequired,
   dispatchSetQuestions: PropTypes.func.isRequired,
+  reduxConfig: PropTypes.arrayOf(PropTypes.object).isRequired,
+  reduxLoading: PropTypes.bool.isRequired,
+  dispatchSetLoading: PropTypes.func.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func,
   }).isRequired,
@@ -114,6 +118,12 @@ Forms.propTypes = {
 const mapDispatchToProps = (dispatch) => ({
   dispatchSetLogin: (state) => dispatch(setLogin(state)),
   dispatchSetQuestions: (state) => dispatch(setQuestions(state)),
+  dispatchSetLoading: () => dispatch(setLoading),
 });
 
-export default connect(null, mapDispatchToProps)(withRouter(Forms));
+const mapStateToProps = (state) => ({
+  reduxConfig: state.reducerConfig,
+  reduxLoading: state.reducerQuestions.loading,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Forms));

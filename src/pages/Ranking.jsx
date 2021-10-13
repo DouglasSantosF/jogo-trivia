@@ -21,7 +21,7 @@ class Ranking extends React.Component {
     return arrayOrdenado.map((array, index) => (
       <div className="list-ranking" key={ index }>
         <div className="indice">
-          <p>{(index) + 1}</p>
+          <p className="position">{(index) + 1}</p>
           <img src={ `https://www.gravatar.com/avatar/${md5(array.email).toString()}` } alt="imagem" />
         </div>
         <p data-testid={ `player-name-${index}` }>{array.nome}</p>

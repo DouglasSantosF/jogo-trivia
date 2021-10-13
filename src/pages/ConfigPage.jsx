@@ -21,6 +21,7 @@ class ConfigPage extends React.Component {
   onSubmit() {
     const { dispatchsetConfig } = this.props;
     dispatchsetConfig(this.state);
+    global.alert('Configuração Salva!');
   }
 
   handleChange({ target }) {
@@ -47,15 +48,15 @@ class ConfigPage extends React.Component {
           Categoria:
           <select name="category" id="cat" onClick={ this.handleChange }>
             <option value="">Qualquer categoria</option>
-            <option value="Entertainment: Music">Música</option>
-            <option value="Entertainment: Film">Filmes</option>
-            <option value="Entertainment: Books">Filmes</option>
-            <option value="Sports">Esporte</option>
-            <option value="History">História</option>
-            <option value="Mathematics">Matemática</option>
-            <option value="Science: Computers">Computadores</option>
-            <option value="Entertainment: Video Games">Video Games</option>
-            <option value="Entertainment: Japanese Anime & Manga">Anime e Mangá</option>
+            <option value="12">Música</option>
+            <option value="11">Filmes</option>
+            <option value="10">Livros</option>
+            <option value="21">Esporte</option>
+            <option value="23">História</option>
+            <option value="19">Matemática</option>
+            <option value="18"> Computadores</option>
+            <option value="15">Video Games</option>
+            <option value="31">Anime e Mangá</option>
           </select>
         </label>
         <label htmlFor="tipo">
