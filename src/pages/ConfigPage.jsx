@@ -34,7 +34,7 @@ class ConfigPage extends React.Component {
   render() {
     return (
       <div className="config">
-        <h1 className="title" data-testid="settings-title">Página de configuraçao</h1>
+        <h1 className="title" data-testid="settings-title">Página de configuração</h1>
         <label htmlFor="dif">
           Dificuldade:
           <select name="difficulty" id="dif" onClick={ this.handleChange }>
