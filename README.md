@@ -73,4 +73,5 @@ Caso queira clonar para rodar localmente, após dar o gitclone em sua máquina, 
 ## Caso queira ver na prática como funciona, acesse o link abaixo: 
 ---
 <br>
+https://trivia-vercel.vercel.app/
 
